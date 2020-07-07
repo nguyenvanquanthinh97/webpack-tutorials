@@ -1,12 +1,13 @@
+import $ from 'jquery';
+
 import './Heading.css';
 
 class Heading {
 	render() {
-		const pageName = arguments[0];
-		const h1 = document.createElement('h1');
-		h1.innerHTML = `Webpack is awesome with`;
-		h1.classList.add('heading');
-		document.body.appendChild(h1);
+		const h1 = $('<h1>');
+		h1.text('Webpack is awesome with');
+		h1.addClass('heading');
+		$('body').append(h1);
 	}
 }
 
