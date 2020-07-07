@@ -4,13 +4,23 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-	entry: './src/index.js',
+	entry: {
+		'hello-world': './src/hello-world.js',
+		kyou: './src/kyou.js'
+	},
 	output: {
-		filename: 'bundle.[contenthash].js',
+		filename: '[name].[contenthash].js',
 		path: path.resolve(__dirname, './dist'),
 		publicPath: ''
 	},
 	mode: 'production',
+	optimization: {
+		splitChunks: {
+			chunks: 'all',
+			minSize: 7000,
+			automaticNameDelimiter: '_'
+		}
+	},
 	module: {
 		rules: [
 			{
@@ -44,16 +54,24 @@ module.exports = {
 	},
 	plugins: [
 		new MiniCssExtractPlugin({
-			filename: 'styles.[contenthash].css'
+			filename: '[name].[contenthash].css'
 		}),
 		new CleanWebpackPlugin({
 			cleanOnceBeforeBuildPatterns: [ '**/*', path.join(process.cwd(), 'build/**/*') ]
 		}),
 		new HtmlWebpackPlugin({
 			title: 'Hello World',
+			chunks: [ 'hello-world', 'vendors~hello-world~kyou' ],
 			description: 'This is a app using webpack manually config',
-			template: 'src/index.hbs',
-			filename: 'index.html'
+			template: 'src/page-template.hbs',
+			filename: 'hello-world.html'
+		}),
+		new HtmlWebpackPlugin({
+			title: 'Kyou Suiri Image',
+			chunks: [ 'kyou', 'vendors~hello-world~kyou' ],
+			description: 'This is a app using webpack manually config',
+			template: 'src/page-template.hbs',
+			filename: 'kyou.html'
 		})
 	]
 };

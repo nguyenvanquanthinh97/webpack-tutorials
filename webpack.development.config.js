@@ -3,9 +3,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-	entry: './src/index.js',
+	entry: {
+		'hello-world': './src/hello-world.js',
+		kyou: './src/kyou.js'
+	},
 	output: {
-		filename: 'bundle.js',
+		filename: '[name].bundle.js',
 		path: path.resolve(__dirname, './dist'),
 		publicPath: ''
 	},
@@ -52,9 +55,17 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			title: 'Hello World',
+			chunks: [ 'hello-world' ],
 			description: 'This is a app using webpack manually config',
-			template: 'src/index.hbs',
-			filename: 'index.html'
+			template: 'src/page-template.hbs',
+			filename: 'hello-world.html'
+		}),
+		new HtmlWebpackPlugin({
+			title: 'Kyou Suiri',
+			chunks: [ 'kyou' ],
+			description: 'This is a app using webpack manually config',
+			template: 'src/page-template.hbs',
+			filename: 'kyou.html'
 		})
 	]
 };
