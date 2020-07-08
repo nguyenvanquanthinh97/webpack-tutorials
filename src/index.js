@@ -2,6 +2,8 @@ import Heading from './components/Heading';
 import HelloWorldButton from './components/HelloWorldButton';
 import addImage from './addImage';
 import './index.scss';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const heading = new Heading();
 heading.render();

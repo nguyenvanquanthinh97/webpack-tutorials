@@ -11,6 +11,12 @@ module.exports = {
 		publicPath: ''
 	},
 	mode: 'production',
+	optimization: {
+		splitChunks: {
+			chunks: 'all',
+			minSize: 7000
+		}
+	},
 	module: {
 		rules: [
 			{

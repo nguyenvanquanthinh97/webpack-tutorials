@@ -1,0 +1,8 @@
+.heading {
+	color: gray;
+}
+
+.hello-world-button{background-color:green;color:white;display:block;padding:8px 16px;outline:none;font-size:1.5rem}.hello-world-text{color:red;font-weight:bold}
+
+@font-face{font-family:"Open Sans";font-weight:300;src:url(fonts/OpenSans-Light.ttf) format("ttf")}@font-face{font-family:"Open Sans";font-weight:400;src:url(fonts/OpenSans-Regular.ttf) format("ttf")}@font-face{font-family:"Open Sans";font-weight:500;src:url(fonts/OpenSans-SemiBold.ttf) format("ttf")}html body{font-family:"Open Sans", sans-serif;font-weight:300}.dropdown-custom{float:right;top:7px;right:40px}
+
